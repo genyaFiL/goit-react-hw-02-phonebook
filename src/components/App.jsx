@@ -19,15 +19,16 @@ class App extends Component {
       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
+    filter: '',
   };
 
   createContacts = data => {
-    console.log('data=>', data);
+    // console.log('data=>', data);
     const newContact = {
       ...data,
       id: nanoid(),
     };
-    console.log('newContact=>', newContact);
+    // console.log('newContact=>', newContact);
 
     this.setState(prevState => ({
       contacts: [...prevState.contacts, newContact],
@@ -36,15 +37,31 @@ class App extends Component {
     console.log('this.state = ', this.state);
   };
 
+  changeFilter = e => {
+    this.setState({ filter: e.currentTarget.value });
+  };
+
+  getfilteredContacts = () => {
+    const normalizedFilter = this.state.filter.toLowerCase();
+    console.log(this.state.contacts);
+    return this.state.contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter)
+    );
+  };
+
   render() {
+    const { filter, contacts } = this.state;
+
+    const filteredContacts = this.getfilteredContacts;
+
     return (
       <div>
         <h1>Phonebook</h1>
         <ContactForm createContacts={this.createContacts} />
 
         <h2>Contacts</h2>
-        <Filter />
-        <ContactList contacts={this.state} />
+        <Filter value={filter} onChange={this.changeFilter} />
+        <ContactList contacts={filteredContacts()} />
       </div>
     );
   }
