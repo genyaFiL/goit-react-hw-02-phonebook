@@ -1,9 +1,9 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class ContactList extends Component {
   render() {
     const { onDeleteContacts } = this.props;
-    // console.log('ContactList=', this.props.contacts);
 
     return (
       <ul>
@@ -19,4 +19,9 @@ class ContactList extends Component {
     );
   }
 }
+
+ContactList.propTypes = {
+  onDeleteContacts: PropTypes.func.isRequired,
+  contacts: PropTypes.func.isRequired,
+};
 export default ContactList;

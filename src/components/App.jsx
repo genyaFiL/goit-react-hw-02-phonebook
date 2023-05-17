@@ -1,15 +1,8 @@
 import { Component } from 'react';
+import { nanoid } from 'nanoid';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
-// import { TransactionHistory } from './TransactionHistory/TransactionHistory';
-
-import { nanoid } from 'nanoid';
-
-// import user from '../data/user';
-// import data from '../data/data';
-// import friends from '../data/friends';
-// import transactions from '../data/transactions';
 
 class App extends Component {
   state = {
@@ -23,18 +16,14 @@ class App extends Component {
   };
 
   createContacts = data => {
-    // console.log('data=>', data);
     const newContact = {
       ...data,
       id: nanoid(),
     };
-    // console.log('newContact=>', newContact);
 
     this.setState(prevState => ({
       contacts: [...prevState.contacts, newContact],
     }));
-
-    console.log('this.state = ', this.state);
   };
 
   deleteContacts = contactsId => {

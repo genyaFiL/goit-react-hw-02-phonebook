@@ -1,9 +1,8 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class ContactForm extends Component {
   state = {
-    // contacts: [],
-    // filter: '',
     name: '',
     number: '',
   };
@@ -60,4 +59,15 @@ class ContactForm extends Component {
     );
   }
 }
+
+ContactForm.propTypes = {
+  createContacts: PropTypes.func.isRequired,
+  contacts: PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ),
+};
 export default ContactForm;
