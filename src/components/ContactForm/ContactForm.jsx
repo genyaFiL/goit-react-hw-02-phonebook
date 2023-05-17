@@ -2,8 +2,8 @@ import { Component } from 'react';
 
 class ContactForm extends Component {
   state = {
-    contacts: [],
-    filter: '',
+    // contacts: [],
+    // filter: '',
     name: '',
     number: '',
   };
@@ -17,10 +17,12 @@ class ContactForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
 
-    this.props.createContacts({
-      name: this.state.name,
-      number: this.state.number,
-    });
+    this.props.contacts.find(option => option.name === this.state.name)
+      ? alert(this.state.name + 'is allready in contacts')
+      : this.props.createContacts({
+          name: this.state.name,
+          number: this.state.number,
+        });
 
     this.setState({
       name: '',
