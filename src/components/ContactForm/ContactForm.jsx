@@ -16,9 +16,11 @@ class ContactForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-
-    this.props.contacts.find(option => option.name === this.state.name)
-      ? alert(this.state.name + 'is allready in contacts')
+    const normalizedName = this.state.name.toLocaleLowerCase();
+    this.props.contacts.find(
+      option => option.name.toLocaleLowerCase() === normalizedName
+    )
+      ? alert(this.state.name + ' is allready in contacts')
       : this.props.createContacts({
           name: this.state.name,
           number: this.state.number,

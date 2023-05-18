@@ -27,6 +27,12 @@ class ContactList extends Component {
 
 ContactList.propTypes = {
   onDeleteContacts: PropTypes.func.isRequired,
-  contacts: PropTypes.func.isRequired,
+  contacts: PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ),
 };
 export default ContactList;

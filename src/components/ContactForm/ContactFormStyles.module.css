@@ -4,7 +4,7 @@
   width: 300px;
 }
 
-input {
+.form_input {
   display: block;
   margin-bottom: 20px;
 }
